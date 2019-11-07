@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Linq To EF - LAB";
+}
+
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Products between $12 and $50</h3>
+        <ul>
+            @foreach (Product p in ViewBag.TogetherExample)
+            {
+                <li>
+                    @p.ProductName - <strong>@string.Format($"{p.UnitPrice:c}")</strong>
+                </li>
+                
+            }
+        </ul>
+        <p>There are a total of <strong>@ViewBag.Count</strong> products represented.</p>
+    </div>
+    <div class="col-md-6">
+        <!--Dairy Products-->
+        <h3>Products in the Dairy Category - Method</h3>
+        <ul>
+            @foreach (Product p in ViewBag.Dairy)
+            {
+                <li>
+                    @p.ProductName -
+                    <strong>@p.Category.CategoryName</strong>
+                </li>
+            }
+        </ul>
+        
+        <p></p>
+
+        <!--Cats > 10 products-->
+        <h3>Categories with more than 10 products - Method</h3>
+        <ul>
+            @foreach (Category c in ViewBag.Units)
+            {
+                <li>
+                    @c.CategoryName - <strong>@c.Products.Count Products</strong>
+
+                </li>
+            }
+        </ul>
+        <p></p>
+     
+
+        <!--German Suppliers-->
+        <h3>Germany Suppliers - Method</h3>
+        <ul>
+            @foreach (Supplier s in ViewBag.Germany)
+            {
+                <li>
+                    @s.CompanyName - <strong>@s.Country</strong>
+                </li>
+            }
+        </ul>
+        <p></p>
+       
+
+        <!--Products containing Chef -->
+        <h3>Products with CHEF in the name:</h3>
+        <ul>
+            @foreach (Product p in ViewBag.Chef)
+            {
+                <li>
+                    @p.ProductName
+                </li>
+            }
+        </ul>
+        <p></p>
+
+        <!--Okra-->
+        <h3>All About Okra</h3>
+
+        <ul>
+            @foreach (Product p in ViewBag.Okra)
+            {
+                <li>
+                    @p.ProductName - <strong>@string.Format("{0:C}", p.UnitPrice)</strong> - @p.UnitsInStock Units in stock
+                </li>
+            }
+        </ul>
+        <!--Units On Order-->
+        <h3>Units on Order:</h3>
+        <ul>
+            @foreach (Product p in ViewBag.Order)
+            {
+                <li>
+                    @p.ProductName - <strong>@p.UnitsOnOrder</strong>
+                </li>
+            }
+        </ul>
+        <p></p>
+
+    </div>
+</div>
+<!--New Row-->
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <!--Active Products Less than $10-->
+        <h3>Active Products less than $10</h3>
+        <ul>
+            @foreach (Product p in ViewBag.Active)
+            {
+                <li>
+                    @p.ProductName - <strong>@string.Format("{0:C}", p.UnitPrice)</strong> 
+                </li>
+            }
+        </ul>
+        <p></p>
+    </div>
+    <div class="col-md-6">
+        <!--Discontinued Products - In Stock - Total Price-->
+        <h3>Discontinued Products</h3>
+        <ul>
+            @foreach (Product p in ViewBag.Discontinued)
+            {
+                <li>
+                    @p.ProductName - Unit in stock: @p.UnitsInStock - Price: <strong>@string.Format("{0:C}", p.UnitPrice)</strong>
+                </li>
+            }
+        </ul>
+        <p></p>
+        <p></p>
+    </div>
+</div>
